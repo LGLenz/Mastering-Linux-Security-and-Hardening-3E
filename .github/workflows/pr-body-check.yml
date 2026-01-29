@@ -1,0 +1,17 @@
+name: PR body check
+
+on:
+  pull_request:
+    types: [opened, edited, reopened, synchronize]
+
+jobs:
+  require-how-i-tested:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check PR body for 'How I tested'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const body = context.payload.pull_request && context.payload.pull_request.body || '';
+            const ok = /How I tested\b/i.test(body);
+            if (!ok) core.setFailed("PR body must include a 'How I tested' section explaining validation steps.");
