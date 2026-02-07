@@ -21,7 +21,7 @@ sudo ip6tables -A INPUT -p icmpv6 -m icmpv6 --icmpv6-type 134:136 -j ACCEPT
 sudo ip6tables -A INPUT -p icmpv6 -m icmpv6 --icmpv6-type 141:142 -j ACCEPT
 # Accept multicast router discovery: advertisement(148), solicitation(149)
 sudo ip6tables -A INPUT -p icmpv6 -m icmpv6 --icmpv6-type 148:149 -j ACCEPT
-# Accept remaining multicast: termination(151), mldv2-listener-report(152), 
-# home-agent-address-discovery-request(153)
+# Accept additional mobility and routing messages: termination(151), fmipv6-messages(152), 
+# rpl-control-message(153)
 sudo ip6tables -A INPUT -p icmpv6 -m icmpv6 --icmpv6-type 151:153 -j ACCEPT
 sudo ip6tables -A INPUT -j DROP
