@@ -4,24 +4,24 @@ sudo ip6tables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 sudo ip6tables -A INPUT -p tcp --dport ssh -j ACCEPT
 sudo ip6tables -A INPUT -p tcp --dport 53 -j ACCEPT
 sudo ip6tables -A INPUT -p udp --dport 53 -j ACCEPT
-sudo ip6tables -A INPUT -p icmpv6 --icmpv6-type 1 -j ACCEPT
-sudo ip6tables -A INPUT -p icmpv6 --icmpv6-type 2 -j ACCEPT
-sudo ip6tables -A INPUT -p icmpv6 --icmpv6-type 3 -j ACCEPT
-sudo ip6tables -A INPUT -p icmpv6 --icmpv6-type 4 -j ACCEPT
-sudo ip6tables -A INPUT -p icmpv6 --icmpv6-type 128 -j ACCEPT
-sudo ip6tables -A INPUT -p icmpv6 --icmpv6-type 129 -j ACCEPT
-sudo ip6tables -A INPUT --protocol icmpv6 --icmpv6-type 130
-sudo ip6tables -A INPUT --protocol icmpv6 --icmpv6-type 131
-sudo ip6tables -A INPUT --protocol icmpv6 --icmpv6-type 132
-sudo ip6tables -A INPUT --protocol icmpv6 --icmpv6-type 143
-sudo ip6tables -A INPUT -p icmpv6 --icmpv6-type 134 -j ACCEPT
-sudo ip6tables -A INPUT -p icmpv6 --icmpv6-type 135 -j ACCEPT
-sudo ip6tables -A INPUT -p icmpv6 --icmpv6-type 136 -j ACCEPT
-sudo ip6tables -A INPUT -p icmpv6 --icmpv6-type 141 -j ACCEPT
-sudo ip6tables -A INPUT -p icmpv6 --icmpv6-type 142 -j ACCEPT
-sudo ip6tables -A INPUT -p icmpv6 --icmpv6-type 148 -j ACCEPT
-sudo ip6tables -A INPUT -p icmpv6 --icmpv6-type 149 -j ACCEPT
-sudo ip6tables -A INPUT -p icmpv6 --icmpv6-type 151 -j ACCEPT
-sudo ip6tables -A INPUT -p icmpv6 --icmpv6-type 152 -j ACCEPT
-sudo ip6tables -A INPUT -p icmpv6 --icmpv6-type 153 -j ACCEPT
+# Consolidated ICMPv6 rules using range matching for better performance
+# This reduces 20+ individual rules to 8 rules using range matching
+# Accept essential ICMPv6 error messages: destination-unreachable(1), packet-too-big(2), 
+# time-exceeded(3), parameter-problem(4)
+sudo ip6tables -A INPUT -p icmpv6 -m icmpv6 --icmpv6-type 1:4 -j ACCEPT
+# Accept echo-request(128) and echo-reply(129)
+sudo ip6tables -A INPUT -p icmpv6 -m icmpv6 --icmpv6-type 128:129 -j ACCEPT
+# Accept multicast listener messages: query(130), report(131), done(132), mldv2-report(143)
+sudo ip6tables -A INPUT -p icmpv6 -m icmpv6 --icmpv6-type 130:132 -j ACCEPT
+sudo ip6tables -A INPUT -p icmpv6 --icmpv6-type 143 -j ACCEPT
+# Accept neighbor discovery: router-solicitation(134), router-advertisement(135), 
+# neighbor-solicitation(136) - critical for IPv6 operation
+sudo ip6tables -A INPUT -p icmpv6 -m icmpv6 --icmpv6-type 134:136 -j ACCEPT
+# Accept inverse neighbor discovery: solicitation(141), advertisement(142)
+sudo ip6tables -A INPUT -p icmpv6 -m icmpv6 --icmpv6-type 141:142 -j ACCEPT
+# Accept multicast router discovery: advertisement(148), solicitation(149)
+sudo ip6tables -A INPUT -p icmpv6 -m icmpv6 --icmpv6-type 148:149 -j ACCEPT
+# Accept remaining multicast: termination(151), mldv2-listener-report(152), 
+# home-agent-address-discovery-request(153)
+sudo ip6tables -A INPUT -p icmpv6 -m icmpv6 --icmpv6-type 151:153 -j ACCEPT
 sudo ip6tables -A INPUT -j DROP
