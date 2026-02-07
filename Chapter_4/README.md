@@ -2,6 +2,8 @@
 
 This directory contains firewall configuration examples for the book "Mastering Linux Security and Hardening - 3rd Edition".
 
+**Note**: This content is from Chapter 4. File locations and references may vary across different editions of the book.
+
 ## Files Overview
 
 ### ip6tables Configuration
