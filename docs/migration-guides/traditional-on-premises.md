@@ -2,7 +2,7 @@
 
 ## Übersicht (Overview)
 
-Dieser Leitfaden richtet sich an die Migration von Fördersystemen vom Groß Rechner auf traditionelle On-Premises Linux-Server. Der Fokus liegt auf der sicheren Integration von Legacy-Anwendungen wie Adabas in gehärteten Linux-Umgebungen.
+Dieser Leitfaden richtet sich an die Migration von Fördersystemen vom Großrechner auf traditionelle On-Premises Linux-Server. Der Fokus liegt auf der sicheren Integration von Legacy-Anwendungen wie Adabas in gehärteten Linux-Umgebungen.
 
 This guide covers migration from mainframe to traditional on-premises Linux servers, focusing on secure integration of legacy applications like Adabas in hardened Linux environments.
 

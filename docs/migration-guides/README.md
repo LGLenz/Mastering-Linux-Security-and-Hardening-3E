@@ -1,7 +1,7 @@
 # LGL BW Fördersystem Migration Guides
 
 ## Overview
-This documentation provides segmented guidance for migrating LGL BW's Fördersystem (grant processing systems) from mainframe environments to hardened Linux servers. The guides are organized by deployment type to address specific security requirements and configurations.
+This documentation provides segmented guidance for migrating LGL BW's Fördersystem (grant processing systems) from mainframe environments (Großrechner) to hardened Linux servers. The guides are organized by deployment type to address specific security requirements and configurations.
 
 ## Documentation Structure
 
