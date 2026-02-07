@@ -10,10 +10,10 @@ sudo ip6tables -A INPUT -p icmpv6 --icmpv6-type 3 -j ACCEPT
 sudo ip6tables -A INPUT -p icmpv6 --icmpv6-type 4 -j ACCEPT
 sudo ip6tables -A INPUT -p icmpv6 --icmpv6-type 128 -j ACCEPT
 sudo ip6tables -A INPUT -p icmpv6 --icmpv6-type 129 -j ACCEPT
-sudo ip6tables -A INPUT --protocol icmpv6 --icmpv6-type 130
-sudo ip6tables -A INPUT --protocol icmpv6 --icmpv6-type 131
-sudo ip6tables -A INPUT --protocol icmpv6 --icmpv6-type 132
-sudo ip6tables -A INPUT --protocol icmpv6 --icmpv6-type 143
+sudo ip6tables -A INPUT --protocol icmpv6 --icmpv6-type 130 -j ACCEPT
+sudo ip6tables -A INPUT --protocol icmpv6 --icmpv6-type 131 -j ACCEPT
+sudo ip6tables -A INPUT --protocol icmpv6 --icmpv6-type 132 -j ACCEPT
+sudo ip6tables -A INPUT --protocol icmpv6 --icmpv6-type 143 -j ACCEPT
 sudo ip6tables -A INPUT -p icmpv6 --icmpv6-type 134 -j ACCEPT
 sudo ip6tables -A INPUT -p icmpv6 --icmpv6-type 135 -j ACCEPT
 sudo ip6tables -A INPUT -p icmpv6 --icmpv6-type 136 -j ACCEPT
