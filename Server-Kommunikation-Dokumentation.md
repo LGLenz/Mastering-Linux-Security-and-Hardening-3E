@@ -757,7 +757,7 @@ iperf3 -c <ziel-server>
 # Latenz-Analyse
 ping -c 100 -i 0.2 <ziel-ip> | tail -1
 
-# Paketverlustwort
+# Paketverlustrate
 ping -c 1000 -q <ziel-ip>
 
 # MTU-Größe ermitteln
